@@ -313,78 +313,78 @@
 			MSDC1_INS@1 {
 				compatible = "mediatek, MSDC1_INS-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0x1 0x8>;
-				debounce = <0x1 0x3e8>;
+				interrupts = <0x1 0x8>; 	/* low level */
+				debounce = <0x1 0x3e8>; 	/* 1ms debounce enable */
 			};
 
 			WIFI@4 {
 				compatible = "mediatek, WIFI-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0x4 0x8>;
-				debounce = <0x4 0x0>;
+				interrupts = <0x4 0x8>; 	/* low level */
+				debounce = <0x4 0x0>; 		/* 0ms */
 			};
 
 			TOUCH_PANEL@6 {
 				compatible = "mediatek, TOUCH_PANEL-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0x6 0x2>;
-				debounce = <0x6 0x0>;
+				interrupts = <0x6 0x2>;		/* low edge */
+				debounce = <0x6 0x0>;		/* 0ms */
 			};
 
 			EXT_BUCK_OC@7 {
 				compatible = "mediatek, EXT_BUCK_OC-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0x7 0x8>;
-				debounce = <0x7 0x0>;
+				interrupts = <0x7 0x8>; 	/* low level */
+				debounce = <0x7 0x0>;		/* 0ms */
 			};
 
 			ALS@8 {
 				compatible = "mediatek, ALS-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0x8 0x8>;
-				debounce = <0x8 0x0>;
+				interrupts = <0x8 0x8>; 	/* low level */
+				debounce = <0x8 0x0>;		/* 0ms */
 			};
 
 			MHALL@10 {
 				compatible = "mediatek, MHALL-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0xa 0x4>;
-				debounce = <0xa 0x7d00>;
+				interrupts = <0xa 0x4>;		/* high level */
+				debounce = <0xa 0x7d00>;	/* 32ms debounce enable */
 			};
 
 			MSE@12 {
 				compatible = "mediatek, MSE-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0xc 0x4>;
-				debounce = <0xc 0x0>;
+				interrupts = <0xc 0x4>;		/* high level */
+				debounce = <0xc 0x0>;		/* 0ms */
 			};
 
 			ACCDET@13 {
 				compatible = "mediatek, ACCDET-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0xd 0x4>;
-				debounce = <0xd 0x3e800>;
+				interrupts = <0xd 0x4>;		/* high level */
+				debounce = <0xd 0x3e800>;	/* 256ms debounce enable */
 			};
 
 			GYRO@105 {
 				compatible = "mediatek, GYRO-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0x69 0x4>;
-				debounce = <0x69 0x0>;
+				interrupts = <0x69 0x4>;	/* high level */
+				debounce = <0x69 0x0>;		/* 0ms */
 			};
 
 			DSI_TE_1@107 {
 				compatible = "mediatek, DSI_TE_1-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0x6b 0x1>;
-				debounce = <0x6b 0x0>;
+				interrupts = <0x6b 0x1>;	/* high edge */
+				debounce = <0x6b 0x0>;		/* 0ms */
 			};
 
 			MHL@134 {
 				compatible = "mediatek, MHL-eint";
 				interrupt-parent = <0xa>;
-				interrupts = <0x86 0x8>;
-				debounce = <0x86 0x0>;
+				interrupts = <0x86 0x8>; 	/* low level */
+				debounce = <0x86 0x0>;		/* 0ms */
 			};
 		};
 

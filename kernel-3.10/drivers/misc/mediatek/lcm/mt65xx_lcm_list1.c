@@ -243,7 +243,7 @@ LCM_DRIVER* lcm_driver_list[] =
 #if defined(NT35596_FHD_AUO_PHANTOM)
         &nt35532_fhd_boe_vdo_lcm_drv,
 #endif
-
+        
 #if defined(NT35695_AUO52_TRULY_FHD)
     &nt35695_auo52_truly_fhd_lcm_drv,
 #endif
