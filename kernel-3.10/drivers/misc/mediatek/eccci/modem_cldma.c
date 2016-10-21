@@ -1064,7 +1064,7 @@ static void md_cd_exception(struct ccci_modem *md, HIF_EX_STAGE stage)
 {
     struct md_cd_ctrl *md_ctrl = (struct md_cd_ctrl *)md->private_data;
 
-    CCCI_INF_MSG(md->index, TAG, "MD exception HIF %d\n", stage);
+    CCCI_INF_MSG(md->index, TAG, "Smosia_cldma:MD exception HIF %d %d\n", stage, md->index);
     // in exception mode, MD won't sleep, so we do not need to request MD resource first
     switch(stage) {
     case HIF_EX_INIT:
@@ -1124,7 +1124,7 @@ static void md_cd_ccif_work(struct work_struct *work)
 {
     struct md_cd_ctrl *md_ctrl = container_of(work, struct md_cd_ctrl, ccif_work);
     struct ccci_modem *md = md_ctrl->txq[0].modem;
-
+    CCCI_INF_MSG(0, TAG, "Smosia_cldma: work %d md_ctrl %d\n", work, md_ctrl->channel_id);
     // seems sometime MD send D2H_EXCEPTION_INIT_DONE and D2H_EXCEPTION_CLEARQ_DONE together
     if(md_ctrl->channel_id & (1<<D2H_EXCEPTION_INIT))
         md_cd_exception(md, HIF_EX_INIT);
@@ -2167,7 +2167,7 @@ static int ccci_modem_probe(struct platform_device *plat_dev)
         md_hw = NULL;
         return -1;
     }
-
+    CCCI_INF_MSG(11111, TAG, "Smosia_cldma:get info ok\n");
     // Allocate md ctrl memory and do initialize
     md = ccci_allocate_modem(sizeof(struct md_cd_ctrl));
     if(md == NULL) {
@@ -2176,7 +2176,7 @@ static int ccci_modem_probe(struct platform_device *plat_dev)
         md_hw = NULL;
         return -1;
     }
-
+    CCCI_INF_MSG(11111, TAG, "Smosia_cldma:mem allocate Ok\n");
     md->index = md_id = dev_cfg.index;
     md->major = dev_cfg.major;
     md->minor_base = dev_cfg.minor_base;
@@ -2184,7 +2184,7 @@ static int ccci_modem_probe(struct platform_device *plat_dev)
     md->plat_dev = plat_dev;
     md->plat_dev->dev.dma_mask=&cldma_dmamask;
     md->plat_dev->dev.coherent_dma_mask = cldma_dmamask;
-    CCCI_INF_MSG(md_id, TAG, "modem CLDMA module probe\n");
+    CCCI_INF_MSG(md_id, TAG, "modem CLDMA module probe Smosia defconf.indx = %d\n",md->index);
     // init modem structure
     md->ops = &md_cd_ops;
     CCCI_INF_MSG(md_id, TAG, "md_cldma_probe:md=%p,md->private_data=%p\n",md,md->private_data);

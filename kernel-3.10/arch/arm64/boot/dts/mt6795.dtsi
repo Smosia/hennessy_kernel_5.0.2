@@ -298,8 +298,8 @@
 			interrupts = <0 128 0x2>;
 		};
 
-		hacc@0x1000A000 {
-			compatible = "mediatek,hacc";
+		SEJ@0x1000A000 {
+			compatible = "mediatek,SEJ";
 			reg = <0x1000A000 0x1000>;
 			interrupts = <0 172 0x8>;
 		};
@@ -901,6 +901,10 @@
 			compatible = "mediatek,mt_soc_dai_stub";
 		};
 
+		MT_SOC_DL2_PCM@0x11220000 {
+			compatible = "mediatek,mt_soc_pcm_dl2";
+		};
+		
 		USB3@0x11270000 {
 			compatible = "mediatek,USB3";
 			reg = <0x11270000 0x10000>, <0x11280000 0x10000>, <0x11290000 0x10000>;

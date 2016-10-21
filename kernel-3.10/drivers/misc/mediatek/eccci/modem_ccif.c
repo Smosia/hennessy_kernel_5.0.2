@@ -355,7 +355,7 @@ static void md_ccif_reset_queue(struct ccci_modem *md)
 
 static void md_ccif_exception(struct ccci_modem *md, HIF_EX_STAGE stage)
 {
-    CCCI_INF_MSG(md->index, TAG, "MD exception HIF %d\n", stage);
+    CCCI_INF_MSG(md->index, TAG, "Smosia:MD exception HIF %d, %d\n",stage,md->index);
     switch(stage) {
     case HIF_EX_INIT:
         ccci_md_exception_notify(md, EX_INIT);
@@ -384,6 +384,7 @@ static void md_ccif_irq_tasklet(unsigned long data)
     struct md_ccif_ctrl *md_ctrl = (struct md_ccif_ctrl *)md->private_data;
     int i;
     CCCI_DBG_MSG(md->index, TAG, "ccif_irq_tasklet1: ch %ld\n", md_ctrl->channel_id);
+    CCCI_INF_MSG(md->index, TAG, "Smosia:ccif_irq_tasklet1: ch %ld\n", md_ctrl->channel_id);
     while(md_ctrl->channel_id!=0)
     {
         if(md_ctrl->channel_id & (1<<D2H_EXCEPTION_INIT))
@@ -1056,36 +1057,36 @@ static int md_ccif_probe(struct platform_device *dev)
     // Allocate modem hardware info structure memory
     md_hw = kzalloc(sizeof(struct md_hw_info), GFP_KERNEL);
     if(md_hw == NULL) {
-        CCCI_INF_MSG(-1, TAG, "md_ccif_probe:alloc md hw mem fail\n");
+        CCCI_INF_MSG(-1, TAG, "Smosia_ccif:md_ccif_probe:alloc md hw mem fail\n");
         return -1;
     }
 
     ret = md_ccif_get_modem_hw_info(dev, &dev_cfg, md_hw);
     if(ret != 0) {
-        CCCI_INF_MSG(-1, TAG, "md_ccif_probe:get hw info fail(%d)\n", ret);
+        CCCI_INF_MSG(-1, TAG, "Smosia_ccif:md_ccif_probe:get hw info fail(%d)\n", ret);
         kfree(md_hw);
         md_hw = NULL;
         return -1;
     }
-
+    CCCI_INF_MSG(11111, TAG, "Smosia_ccif:get info ok\n");
     // Allocate md ctrl memory and do initialize
     md = ccci_allocate_modem(sizeof(struct md_ccif_ctrl));
     if(md == NULL) {
-        CCCI_INF_MSG(-1, TAG, "md_ccif_probe:alloc modem ctrl mem fail\n");
+        CCCI_INF_MSG(-1, TAG, "Smosia_ccif:md_ccif_probe:alloc modem ctrl mem fail\n");
         kfree(md_hw);
         md_hw = NULL;
         return -1;
     }
-
+    CCCI_INF_MSG(11111, TAG, "Smosia_ccif:calloc OK\n");
     md->index = md_id = dev_cfg.index;
     md->major = dev_cfg.major;
     md->minor_base = dev_cfg.minor_base;
     md->capability = dev_cfg.capability;
     md->plat_dev = dev;
-    CCCI_INF_MSG(md_id, TAG, "modem ccif module probe\n");
+    CCCI_INF_MSG(11111, TAG, "Smosia_ccif:modem ccif module probe idex=%d\n", md->index);
     // init modem structure
     md->ops = &md_ccif_ops;
-    CCCI_INF_MSG(md_id, TAG, "md_ccif_probe:md_ccif=%p,md_ctrl=%p\n",md,md->private_data);
+    CCCI_INF_MSG(md_id, TAG, "Smosia_ccif:md_ccif_probe:md_ccif=%p,md_ctrl=%p\n",md,md->private_data);
     md_ctrl = (struct md_ccif_ctrl *)md->private_data;
     md_ctrl->hw_info = md_hw;
     snprintf(md_ctrl->wakelock_name, sizeof(md_ctrl->wakelock_name), "md%d_ccif_trm", md_id+1);
