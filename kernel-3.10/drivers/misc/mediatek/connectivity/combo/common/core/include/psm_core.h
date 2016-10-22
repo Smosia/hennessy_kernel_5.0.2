@@ -189,10 +189,10 @@ INT32 stp_psm_release_data(MTKSTP_PSM_T *stp_psm);
 INT32 stp_psm_hold_data(MTKSTP_PSM_T *stp_psm,
 			const PUINT8 buffer, const UINT32 len, const UINT8 type);
 INT32 stp_psm_do_wakeup(MTKSTP_PSM_T *stp_psm);
-#define PSM_USE_COUNT_PACKAGE 0
+#define PSM_USE_COUNT_PACKAGE 1
 #if PSM_USE_COUNT_PACKAGE
 #define MTK_COMBO_PSM_RX_TH_DEFAULT (1600)
-#define MTK_COMBO_PSM_TX_TH_DEFAULT (300)
+#define MTK_COMBO_PSM_TX_TH_DEFAULT (400)
 INT32 stp_psm_disable_by_tx_rx_density(MTKSTP_PSM_T *stp_psm, INT32 dir);
 #else
 #define	SAMPLE_DURATION 1 /*1 second*/

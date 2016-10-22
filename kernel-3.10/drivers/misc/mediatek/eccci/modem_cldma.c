@@ -1150,6 +1150,7 @@ static irqreturn_t md_cd_ccif_isr(int irq, void *data)
     // must ack first, otherwise IRQ will rush in
     md_ctrl->channel_id = cldma_read32(md_ctrl->ap_ccif_base, APCCIF_RCHNUM);
 	CCCI_DBG_MSG(md->index, TAG, "MD CCIF IRQ 0x%X\n", md_ctrl->channel_id);
+    CCCI_INF_MSG(md->index, TAG, "MD CCIF IRQ 0x%X\n", md_ctrl->channel_id);
     cldma_write32(md_ctrl->ap_ccif_base, APCCIF_ACK, md_ctrl->channel_id);
 
 #if 0 // workqueue is too slow
