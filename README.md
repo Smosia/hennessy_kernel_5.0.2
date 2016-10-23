@@ -49,24 +49,21 @@ make -C kernel-3.10 O=$TOP/KERNEL_OBJ ROOTDIR=$TOP
 
 # I2C
 
-I2C0
+* I2C0:
 	* DW9761BAF 	            (0018)
 	* BU6429AF 	            	(0019)
 	* CAM_CAL_DRV           	(0036)
 	* OV13853_CAM_CAL_DRV    	(0037)
 	* tps65132              	(003e)
 	* kd_camera_hw          	(007f)
-
-I2C1
+* I2C1:
 	* da9210                	(0068)	
 	* tps6128x              	(0075)	
-
-I2C2
+* I2C2:
 	* FT						(0038) 	
 	* atmel_mxt_ts           	(004a)	
-	* kd_camera_hw_bus2    		(007f)	
-	
-I2C3
+	* kd_camera_hw_bus2    		(007f)		
+* I2C3:
 	* akm09911               	(000c)	
 	* LTR_559ALS				(0023)	
 	* yas537                	(002e)	
@@ -77,14 +74,11 @@ I2C3
 	* bmi160_acc				(0068)	
 	* LSM6DS3_ACCEL         	(006a)	
 	* bq24296         			(006b)	
-
-I2C4
+* I2C4:
 	* CW2015 					(0062)
-
-SPI0.0
+* SPI0.0:
 	* fpc1020							
-
-SPI0.1
+* SPI0.1:
 	* fp_spi							
 
 # Ported by
