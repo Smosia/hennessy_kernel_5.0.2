@@ -1,7 +1,7 @@
 # Custom kernel for Xiaomi Redmi Note 3 (Hennessy)
 # Kernel version 3.10.61
 # Vendor Vanzo
-Works in rom(tested 7.0.16.0) and recovery
+Works in rom(tested 7.0.11.0) and recovery
 
 * Works:
 	* LCM(nt35596 tianma, nt35532_boe)
@@ -21,6 +21,7 @@ Works in rom(tested 7.0.16.0) and recovery
 	* Vibrator
 	* Battery 3000mah (need to change to 4000 mah)
 	* USB-MTP
+	* CW2015
 
 * Don't tested (maybe working):
 	* OTG
@@ -30,11 +31,11 @@ Works in rom(tested 7.0.16.0) and recovery
 
 * Don't work:
 	* Mag
+	* bq24296
 	* MD1 and MD2(sim1 and sim2)
     * Gpu (bugs) 
 	* Camera
 	* Lens
-	* CW2015, bq24296 (hw battery driver)
 	* IR Blaster
 	* Flashlight
 	* Fingerprint
@@ -47,8 +48,7 @@ mkdir -p $TOP/KERNEL_OBJ
 make -C kernel-3.10 O=$TOP/KERNEL_OBJ ARCH=arm64 MTK_TARGET_PROJECT=hennessy TARGET_BUILD_VARIANT=user CROSS_COMPILE=$TOOLCHAIN ROOTDIR=$TOP hennessy_defconfig
 make -C kernel-3.10 O=$TOP/KERNEL_OBJ ROOTDIR=$TOP
 
-# I2C
-
+# Busses
 * I2C0:
 	* DW9761BAF 	            (0018)
 	* BU6429AF 	            	(0019)

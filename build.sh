@@ -5,5 +5,5 @@ make -C kernel-3.10 O=$TOP/KERNEL_OBJ ARCH=arm64 MTK_TARGET_PROJECT=hennessy TAR
 make -C kernel-3.10 O=$TOP/KERNEL_OBJ ROOTDIR=$TOP
 
 # userfriendly :)
-rm /home/smosia/Android/CarlivImageKitchen64/boot_mr7/boot.img-kernel
-cp /home/smosia/Android/kernel/henessy/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb /home/smosia/Android/CarlivImageKitchen64/boot_mr7/boot.img-kernel
+rm /home/smosia/Android/CarlivImageKitchen64/boot_7.0.11/boot.img-kernel
+cp /home/smosia/Android/kernel/henessy/KERNEL_OBJ/arch/arm64/boot/Image.gz-dtb /home/smosia/Android/CarlivImageKitchen64/boot_7.0.11/boot.img-kernel
